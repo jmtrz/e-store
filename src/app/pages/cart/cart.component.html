@@ -13,24 +13,31 @@
         <ng-container matColumnDef="name">
             <th mat-header-cell *matHeaderCellDef>Name</th>
             <td mat-cell *matCellDef="let element">
-                <p class="truncate max-w-xs">{{element.name}}</p>   
+                <span class="truncate max-w-xs">{{element.name}}</span>   
             </td>
             <td mat-footer-cell *matFooterCellDef></td>
         </ng-container>
         <ng-container matColumnDef="price">
             <th mat-header-cell *matHeaderCellDef>Price</th>
             <td mat-cell *matCellDef="let element">
-                <p class="truncate max-w-xs">{{element.price | currency: 'Php'}}</p>   
+                <p class="truncate max-w-xs block">{{element.price | currency: 'Php'}}</p>   
             </td>
             <td mat-footer-cell *matFooterCellDef></td>
         </ng-container>
         <ng-container matColumnDef="quantity">
             <th mat-header-cell *matHeaderCellDef>Quantity</th>
             <td mat-cell *matCellDef="let element">
-                <button mat-icon-button>
+                <button 
+                    (click)="onRemoveQuantity(element)"
+                    mat-icon-button>
                     <mat-icon>remove</mat-icon>
                 </button>
                 <span>{{element.quantity}}</span>
+                <button 
+                    (click)="onAddQuantity(element)"
+                    mat-icon-button>
+                    <mat-icon>add</mat-icon>
+                </button>
             </td>
             <td mat-footer-cell *matFooterCellDef></td>
         </ng-container>
@@ -54,16 +61,18 @@
                     class="float-right">Clear All</button>
             </th>          
             <td mat-cell *matCellDef="let element">
-                <button mat-min-fab color="warn">
+                <button 
+                    (click)="onRemoveFromCart(element)"
+                    mat-mini-fab color="warn">
                     <mat-icon>close</mat-icon>
                 </button>
             </td>
             <td mat-footer-cell *matFooterCellDef>
                 <button (click)="onCheckout()"
                     mat-raised-button
-                    color="primar"
+                    color="primary"
                     class="float-right">
-
+                    Proceed to the checkout
                 </button>
             </td>
         </ng-container>

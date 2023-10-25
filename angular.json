@@ -91,10 +91,14 @@
               "browserTarget": "e-store:build:production"
             },
             "development": {
-              "browserTarget": "e-store:build:development"
+              "browserTarget": "e-store:build:development"            
             }
           },
-          "defaultConfiguration": "development"
+          "defaultConfiguration": "development",
+          "options": {
+            "browserTarget": "e-store:build",
+            "proxyConfig": "src/proxy.conf.json"
+          }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
